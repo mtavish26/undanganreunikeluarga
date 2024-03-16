@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reuni Keluarga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&display=swap" rel="stylesheet">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    
+    .video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .video-container video {
+        min-width: 100%;
+        min-height: 100%;
+        width: 400px;
+        height: 720px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+    }
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .berkshire-swash-regular {
+    font-family: "Berkshire Swash", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+    .bree-serif-regular {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+    .audio-button {
+        background-color: #43825c;
+        border: none;
+        color: white;
+        padding: 6px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: auto;
+        cursor: pointer;
+        border-radius: 10px;
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s ease;
+        font-family: 'Bree Serif', serif; /* Mengubah jenis font untuk tombol audio */
+    }
+
+    /* Efek hover untuk tombol audio */
+    .audio-button:hover {
+        background-color: #45a049;
+    }
+
+    /* Gaya tombol peta */
+    .maps-button {
+        background-color: #478a61;
+        border: none;
+        color: white;
+        padding: 8px 28px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: auto;
+        cursor: pointer;
+        border-radius: 10px;
+        position: absolute;
+        top: 77.5%; /* Menempatkan tombol peta sedikit lebih rendah */
+        left: 53.89%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s ease;
+        font-family: 'Bree Serif', serif; /* Mengubah jenis font untuk tombol maps */
+    }
+
+    /* Efek hover untuk tombol peta */
+    .maps-button:hover {
+        background-color: #0056b3;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="D:/Desain/Coding/Reuni/Belajar/vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+</div>
+<body>
+    <audio id="myAudio" autoplay loop>
+        <source src="D:/Desain/Coding/Reuni/Belajar/file/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <button class="audio-button" onclick="toggleAudio()">Mainkan/Pause Audio</button>
+    
+    <script>
+    var audio = document.getElementById("myAudio");
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+</script>
+    
+
+<button class="maps-button" onclick="bukaTautan()">Buka Maps</button>
+
+<script>
+function bukaTautan() {
+  window.location.href = "https://www.google.com/maps/place/PERUM+PERMATA+BIRU/@-8.1470999,113.2273735,21z/data=!4m7!3m6!1s0x2dd66706e594a1d3:0x803280da15fbefd6!8m2!3d-8.1469756!4d113.2276883!15sCiVQRVJVTUFIQU4gUEVSTUFUQSBCSVJVIEdSQVRJIExVTUFKQU5HkgETaG91c2luZ19kZXZlbG9wbWVudOABAA!16s%2Fg%2F11g1gmzd6r?entry=tts"; // Ganti dengan URL yang ingin Anda buka
+}
+</script>
+</script>
+</body>
+</html>

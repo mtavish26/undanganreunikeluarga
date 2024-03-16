@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cover Undangan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allan:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    
+    .video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .video-container video {
+        min-width: 100%;
+        min-height: 100%;
+        width: 400px;
+        height: 720px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .countdown {
+        font-family: 'Allan', serif;
+        font-size: 30px;
+        text-align: center;
+        color: rgb(174, 0, 0);
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .undangan-button {
+       background-color: #43825c;
+        border: none;
+        color: white;
+        padding: 6px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: auto;
+        cursor: pointer;
+        border-radius: 10px;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s ease;
+        font-family: 'Berkshire Swash', serif; /* Mengubah jenis font untuk tombol audio */
+    }
+    .audio-button:hover {
+        background-color: #45a049;
+    }
+    .allan-bold {
+      font-family: "Allan", serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+    .berkshire-swash-regular {
+    font-family: "Berkshire Swash", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="D:/Desain/Coding/Reuni/Belajar/file/cover.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Audio Button -->
+    <button class="undangan-button" onclick="toggleAudio()">Buka Undangan</button>
+    
+    <!-- Audio Element -->
+    <audio id="myAudio" autoplay loop>
+        <source src="D:/Desain/Coding/Reuni/Belajar/file/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+<script>
+// Tentukan tanggal dan waktu acara (dalam waktu UTC)
+var eventDate = new Date("2024-04-12T09:10:00Z");
+
+// Fungsi untuk memperbarui countdown setiap detik
+var countdownTimer = setInterval(function() {
+  var now = new Date().getTime();
+  var timeLeft = eventDate - now;
+
+  // Hitung waktu yang tersisa dalam hari, jam, menit, dan detik
+  var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  // Format waktu dalam format "hari:jam:menit:detik"
+  var formattedTime = padNumber(days) + " hari " + padNumber(hours) + " jam " + padNumber(minutes) + " menit " + padNumber(seconds) + " detik ";
+
+  // Tampilkan waktu pada elemen dengan class "countdown"
+  document.getElementById("countdown").textContent = formattedTime;
+
+  // Jika waktu habis, hentikan countdown
+  if (timeLeft < 0) {
+    clearInterval(countdownTimer);
+    document.getElementById("countdown").textContent = "Acara sudah dimulai!";
+  }
+}, 1000);
+
+// Fungsi untuk menambahkan nol di depan angka jika kurang dari 10
+function padNumber(number) {
+  return (number < 10 ? "0" : "") + number;
+}
+
+// Fungsi untuk toggle audio
+function toggleAudio() {
+  var audio = document.getElementById("myAudio");
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+  window.location.href = "reuni.html"; // Ganti dengan URL yang ingin Anda buka
+}
+</script>
+
+</body>
+</html>
